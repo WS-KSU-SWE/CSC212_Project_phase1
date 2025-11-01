@@ -2,21 +2,22 @@ package project_Phase_1_CSC212;
 
 public class Order {
 
+	private Customer customerReference;
+    private DoubleLinkedList<Product> productList;
+    private Date orderDate;
 	private int orderId;
     private double totalPrice;
-    private Date orderDate;
     private String status;
-    private Customer customerReference;
-    private DoubleLinkedList<Product> productList;
+    
 
-    public Order(int orderId, double totalPrice, Date orderDate, String status, Customer customerReference) {
+    public Order(int orderId, double totalPrice, Date orderDate, String status, Customer customerReference, DoubleLinkedList<Product> productList) {
     	
         this.orderId = orderId;
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
         this.status = status;
         this.customerReference = customerReference;
-        this.productList = new DoubleLinkedList<Product>();
+        this.productList = productList;
     
     }
 
