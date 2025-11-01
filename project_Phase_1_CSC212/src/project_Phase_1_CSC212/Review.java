@@ -7,11 +7,12 @@ public class Review {
     private Customer reviewer;
 
     public Review(int rating, String comment, Customer reviewer) {
-        this.rating = rating;
+    	this.rating = rating;
         this.comment = comment;
         this.reviewer = reviewer;
     }
-
+    
+    
     public int getRating() {
         return rating;
     }
