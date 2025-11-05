@@ -29,7 +29,7 @@ public class Product {
 		
 		Review review = new Review(rating, comment, reviewer);
 		// ordering the reviewList based on customer id
-		reviewList.enqueue(review, reviewer.getCustomerID());
+		reviewList.enqueue(review, reviewer.getCustomerId());
 		
 		return true;
 	}
@@ -119,6 +119,11 @@ public class Product {
 		}
 		
 		this.stock = stock;
+	}
+	
+	
+	public CustomPriorityQueue<Review> getReviewList() {
+		return reviewList;
 	}
 	
 }
