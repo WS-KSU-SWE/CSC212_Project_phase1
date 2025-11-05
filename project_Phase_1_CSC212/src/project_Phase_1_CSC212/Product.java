@@ -17,6 +17,8 @@ public class Product {
 		setPrice(price);
 		setStock(stock);
 		
+		reviewList = new CustomPriorityQueue<Review>();
+		
 	}
 	
 	

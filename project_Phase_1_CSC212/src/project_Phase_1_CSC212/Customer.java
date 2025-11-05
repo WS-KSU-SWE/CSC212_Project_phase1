@@ -14,6 +14,8 @@ public class Customer {
 		this.customerId = customerId;
 		this.email = email;
 		this.name = name;
+		
+		orderList = new DoubleLinkedList<Order>();
 
 	}
 
