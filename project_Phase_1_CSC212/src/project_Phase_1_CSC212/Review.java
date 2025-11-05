@@ -37,4 +37,8 @@ public class Review {
         this.reviewer = reviewer;
     }
 	
+    public String toString() {
+    	return "reviewer Id: " + reviewer.getCustomerId() + ", comment: " + comment + ", rating: " + rating;
+    }
+    
 }

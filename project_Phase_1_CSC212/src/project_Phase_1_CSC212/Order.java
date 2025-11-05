@@ -69,5 +69,8 @@ public class Order {
         this.productList = productList;
     }
 
-	
+	public String toString() {
+		return "ID: " + orderId + ", status: " + status + ", total price: " + totalPrice + ", order date: " + orderDate;
+	}
+    
 }

@@ -9,7 +9,7 @@ public class Customer {
 	DoubleLinkedList<Order> orderList = new DoubleLinkedList<Order>();
 
 	
-	public Customer(String name, String email, int customerID) {
+	public Customer(String name, String email, int customerId) {
 
 		this.customerId = customerId;
 		this.email = email;
@@ -88,4 +88,9 @@ public class Customer {
 		return orderList;
 	}
 
+	
+	public String toString() {
+		return "ID: " + customerId + ", name: " + name + ", email: " + email;
+	}
+	
 }

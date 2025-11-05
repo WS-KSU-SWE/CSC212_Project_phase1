@@ -129,8 +129,5 @@ public class DoubleLinkedList<T> {
 		
 		length--;
 	}
-	public Node<T> getHead() {
-		return head;
-	}
 	
 }

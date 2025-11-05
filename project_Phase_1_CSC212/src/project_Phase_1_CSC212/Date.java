@@ -36,5 +36,8 @@ public class Date {
         this.year = year;
     }
 
-	
+    public String toString() {
+    	return day + "/" + month + "/" + year;
+    }
+    
 }

@@ -126,4 +126,9 @@ public class Product {
 		return reviewList;
 	}
 	
+	
+	public String toString() {
+		return "ID: " + prdouctId + ", name: " + name + ", price: " + price + ", stock: " + stock;
+	}
+	
 }
