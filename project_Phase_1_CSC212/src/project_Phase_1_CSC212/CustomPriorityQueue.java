@@ -102,4 +102,18 @@ public class CustomPriorityQueue <T> {
 		return data;
 	}
 	
+	
+	public void printPQ() {
+		
+		PQNode<T> temp = head;
+		
+		while (temp != null) {
+			System.out.println(temp.data);
+			
+			temp = temp.next;
+		}
+		
+		System.out.println();
+	}
+	
 }

@@ -19,8 +19,6 @@ public class Order {
         this.customerReference = customerReference;
         this.productList = productList;
         
-        productList = new DoubleLinkedList<Product>();
-        
     }
 
     public int getOrderId() {
