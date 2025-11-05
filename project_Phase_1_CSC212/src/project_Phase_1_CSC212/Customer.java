@@ -6,7 +6,7 @@ public class Customer {
 	private String name;
 	private String email;
 
-	DoubleLinkedList<Order> orderList = new DoubleLinkedList<Order>();
+	private DoubleLinkedList<Order> orderList = new DoubleLinkedList<Order>();
 
 	
 	public Customer(String name, String email, int customerId) {

@@ -55,7 +55,7 @@ public class Product {
 	
 	public double getAverageRating() {
 		
-		int count = reviewList.getLength();
+		int count = reviewList.length();
 		double sum = 0;
 		double avg;
 		

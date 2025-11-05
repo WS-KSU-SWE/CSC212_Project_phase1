@@ -40,11 +40,6 @@ public class CustomPriorityQueue <T> {
 	}
 	
 	
-	public int getLength() {
-		return length;
-	}
-	
-	
 	public void findFirst() {
 		current = head;
 	}
