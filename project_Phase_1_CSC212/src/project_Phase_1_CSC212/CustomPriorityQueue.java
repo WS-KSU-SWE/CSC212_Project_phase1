@@ -1,12 +1,13 @@
 package project_Phase_1_CSC212;
 
-public class PriorityQueue <T> {
+public class CustomPriorityQueue <T> {
 
 	private PQNode<T> head;
+	private PQNode<T> current;
 	
 	private int length;
 	
-	public PriorityQueue() {
+	public CustomPriorityQueue() {
 		
 	}
 	
@@ -26,6 +27,41 @@ public class PriorityQueue <T> {
 	
 	public int length() {
 		return length;
+	}
+	
+	
+	public boolean first() {
+		return current == head;
+	}
+	
+	
+	public boolean last() {
+		return current.next == null;
+	}
+	
+	
+	public int getLength() {
+		return length;
+	}
+	
+	
+	public void findFirst() {
+		current = head;
+	}
+	
+	
+	public void findNext() {
+		current = current.next;
+	}
+	
+	
+	public T retrive() {
+		return current.data;
+	}
+	
+	
+	public void update(T data) {
+		current.data = data;
 	}
 	
 	
@@ -54,7 +90,7 @@ public class PriorityQueue <T> {
 		
 		newNode.next = current;
 		previous.next = newNode;
-		
+		this.current = newNode;
 		length++;
 	}
 	
@@ -65,6 +101,8 @@ public class PriorityQueue <T> {
 		
 		head = head.next;
 		length--;
+		
+		current = head;
 		
 		return data;
 	}

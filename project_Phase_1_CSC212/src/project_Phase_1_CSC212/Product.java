@@ -2,7 +2,7 @@ package project_Phase_1_CSC212;
 
 public class Product {
 
-	private DoubleLinkedList<Review> reviewList;
+	private CustomPriorityQueue<Review> reviewList;
 	
 	private int prdouctId;
 	private String name;
@@ -28,16 +28,16 @@ public class Product {
 	public boolean addReview(int rating, String comment, Customer reviewer) {
 		
 		Review review = new Review(rating, comment, reviewer);
-		
-		reviewList.insertFirst(review);
+		// ordering the reviewList based on customer id
+		reviewList.enqueue(review, reviewer.getCustomerID());
 		
 		return true;
 	}
 	
 	// edits the review that is being pointed at by current
 	public boolean editReview(int rating, String comment, Customer reviewer) {
-		
-		if (reviewList.empty()) {
+		// empty
+		if (reviewList.length() == 0) {
 			return false;
 		}
 		
