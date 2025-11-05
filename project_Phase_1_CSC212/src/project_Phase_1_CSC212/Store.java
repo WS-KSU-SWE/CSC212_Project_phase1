@@ -22,6 +22,57 @@ public class Store {
 	}
 	
 	
+	public boolean searchProduct(int productId) {
+		
+		products.findFirst();
+		
+		for (int i = 0; i < products.getLength(); ++i) {
+			
+			if (products.retrive().getProductId() == productId) {
+				return true;
+			}
+			
+			products.findNext();
+		}
+		
+		return false;
+	}
+	
+	
+	public boolean searchProduct(String name) {
+		
+		products.findFirst();
+		
+		for (int i = 0; i < products.getLength(); ++i) {
+			
+			if (products.retrive().getName().equals(name)) {
+				return true;
+			}
+			
+			products.findNext();
+		}
+		
+		return false;
+	}
+	
+	
+	public boolean searchCustomer(int customerId) {
+		
+		customers.findFirst();
+		
+		for (int i = 0; i < customers.getLength(); ++i) {
+			
+			if (customers.retrive().getCustomerId() == customerId) {
+				return true;
+			}
+			
+			customers.findNext();
+		}
+		
+		return false;
+	}
+	
+	
 	public DoubleLinkedList<Product> outOfStockProducts() {
 		
 		DoubleLinkedList<Product> outOfStock = new DoubleLinkedList<Product>();
@@ -44,5 +95,55 @@ public class Store {
 		
 		return outOfStock;
 	}
+	
+	
+	public boolean placeOrder(int orderId, int[] productIds, double totalPrice, Date orderDate, int customerId) {
+		
+		Order order;
+		
+		DoubleLinkedList<Product> orderProd = new DoubleLinkedList<Product>();
+		
+		for (int i = 0; i < productIds.length; ++i) {
+			
+			if (!searchProduct(productIds[i])) {
+				return false;
+			}		
+			orderProd.insert(products.retrive());
+	
+		}
+		
+		if (!searchCustomer(customerId)) {
+			return false;
+		}
+		
+		order = new Order(orderId, totalPrice, orderDate, "Pending", customers.retrive(), orderProd);
+		
+		orders.insertFirst(order);
+		
+		return true;
+	}
+	
+	
+	public void cancelOrder() {
+		orders.retrive().setStatus("Cancelled");
+	}
+	
+	
+	public boolean searchOrder(int orderId) {
+		
+		orders.findFirst();
+		
+		for (int i = 0; i < orders.getLength(); ++i) {
+			
+			if (orders.retrive().getOrderId() == orderId) {
+				return true;
+			}
+			
+			orders.findNext();
+		}
+		
+		return false;
+	}
+	
 	
 }
