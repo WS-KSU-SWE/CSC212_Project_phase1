@@ -26,7 +26,7 @@ public class Customer {
 	public void viewOrderHistory() {
 		
 		if (orderList.empty()) {
-			System.out.println("There is no orders ");
+			System.out.println("There are no orders ");
 			return;
 		}
 

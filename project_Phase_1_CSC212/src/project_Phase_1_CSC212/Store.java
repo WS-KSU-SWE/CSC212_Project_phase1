@@ -204,12 +204,19 @@ public class Store {
 			
 			reviewList.findFirst();
 			
+			boolean foundReviewer = false;
+			
 			for (int j = 0; j < reviewList.length(); ++i) {
 				
 				Customer reviewer = reviewList.retrive().getReviewer();
 				
 				if (reviewer.equals(customer)) {
+					foundReviewer = true;
 					customerReviews.insert(reviewList.retrive());
+				}
+				// if we already found the reviewer and the current reviewer is not the customer, then we terminate. We can do this because the reviews are ordered by customer id.
+				else if (foundReviewer) {
+					break;
 				}
 				
 				reviewList.findNext();
@@ -341,7 +348,7 @@ public class Store {
 			
 			Product product = products.retrive();
 			
-			int ratting = (int) Math.ceil(product.getAverageRating());
+			int ratting = (int) Math.ceil(product.getAverageRating() * 100); // get a better scale of the avg rating: 4.5 > 4 ==> 4 = 4 450.33 > 400.2 ==> 450 > 400  
 			
 			temp.enqueue(product, ratting);
 		
