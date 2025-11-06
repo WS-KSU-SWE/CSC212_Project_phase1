@@ -158,7 +158,7 @@ public class Store {
 		
 		order = new Order(orderId, totalPrice, orderDate, status, customers.retrive(), orderProd);
 		
-		
+		customers.retrive().addToOrderList(order);
 		
 		orders.insert(order);
 		
@@ -206,7 +206,7 @@ public class Store {
 			
 			boolean foundReviewer = false;
 			
-			for (int j = 0; j < reviewList.length(); ++i) {
+			for (int j = 0; j < reviewList.length(); ++j) {
 				
 				Customer reviewer = reviewList.retrive().getReviewer();
 				
@@ -232,6 +232,9 @@ public class Store {
 	
 	public DoubleLinkedList<Order> getOrderBetweenDates(Date startDate, Date endDate) {
 		
+		System.out.println(startDate.getIntDate());
+		System.out.println(endDate.getIntDate());
+		
 		DoubleLinkedList<Order> ordersBetween = new DoubleLinkedList<Order>();
 		
 		orders.findFirst();
@@ -242,14 +245,14 @@ public class Store {
 			Date date = order.getOrderDate();
 			
 			
-			if (date.getIntDate() > startDate.getIntDate() && date.getIntDate() < endDate.getIntDate()) {
+			if (date.getIntDate() >= startDate.getIntDate() && date.getIntDate() <= endDate.getIntDate()) {
 				ordersBetween.insertFirst(order);
 			}
 				
 			orders.findNext();
 		}
 		
-		return orders;
+		return ordersBetween;
 	}
 	
 	
@@ -264,7 +267,8 @@ public class Store {
 		
 		// get all products related to customer 1
 		if (!searchCustomer(customerId1)) {
-			return null;
+			
+			return commonProducts;
 		}
 		
 		orderList = customers.retrive().getOrderList();
@@ -284,10 +288,13 @@ public class Store {
 			
 			orderList.findNext();
 		}
+		
+		//products1.printList();
 		
 		// get all products related to customer 2
 		if (!searchCustomer(customerId2)) {
-			return null;
+			
+			return commonProducts;
 		}
 		
 		orderList = customers.retrive().getOrderList();
@@ -301,12 +308,13 @@ public class Store {
 			
 			for (int j = 0; j < products.getLength(); ++j) {
 				
-				products1.insertFirst(products.retrive());
+				products2.insertFirst(products.retrive());
 				products.findNext();
 			}
 			
 			orderList.findNext();
 		}
+		
 		
 		// finding common products with an average rating greater than 4
 		
@@ -321,13 +329,18 @@ public class Store {
 				Product prod1 = products1.retrive();
 				Product prod2 = products2.retrive();
 				
+				//System.out.println(prod1 + " " + prod1.getAverageRating());
+				//System.out.println(prod2 + " " + prod2.getAverageRating());
+				
+				
 				if (prod1.equals(prod2) && prod1.getAverageRating() > 4) {
 					commonProducts.insert(prod1);
 				}
 				
+				products2.findNext();
 			}
 			
-			
+			products1.findNext();
 		}
 		
 		
@@ -377,6 +390,7 @@ public class Store {
 		readProductsCSV();
 		readCustomersCSV();
 		readOrdersCSV();
+		readReviewsCSV();
 		
 	}
 	
@@ -682,23 +696,32 @@ public class Store {
 		searchOrder(id);
 	}
 	
-	/*
-	// test main method
+	
+	// test main method for debugging
 	public static void main(String[] args) throws IOException {
 		
 		Store store = new Store();
 		
-		store.readProductsCSV();
-		store.readCustomersCSV();
-		store.readOrdersCSV();
-		store.readReviewsCSV();
+		store.readCSV();
 		//store.printProducts();
 		//store.printOrders();
 		
-		System.out.println(store.products.retrive());
+		//System.out.println(store.products.retrive());
 		
-		store.products.retrive().getReviewList().printPQ();
+		//store.products.retrive().getReviewList().printPQ();
+		
+		//store.commonProducts(201, 202).printList();
+		
+		//store.products.retrive().getReviewList().printPQ();
+		
+		//store.products.findFirst();
+		
+		//store.products.retrive().getReviewList().printPQ();
+		
+		//System.out.println(store.products.retrive().getReviewList().retrive());
+		
+		//store.getOrderBetweenDates(new Date(2, 3, 2025), new Date(2, 12, 2025)).printList();
 		
 	}
-	*/
+	
 }

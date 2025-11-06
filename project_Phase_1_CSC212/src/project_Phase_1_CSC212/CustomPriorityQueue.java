@@ -68,7 +68,7 @@ public class CustomPriorityQueue <T> {
 		
 		if (head == null || head.priority < priority) {
 			newNode.next = head;
-			head = newNode;
+			this.current = head = newNode;
 			
 			length++;
 			

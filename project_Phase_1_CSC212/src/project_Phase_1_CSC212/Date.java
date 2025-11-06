@@ -14,7 +14,7 @@ public class Date {
 
     
     public int getIntDate() {
-    	return year*1000 + month*100 + day; // ex 2025/5/4 --> 20250504 < 20250506 --> 2025/5/6
+    	return (year*100 + month)*100 + day; // ex 2025/5/4 --> 20250504 < 20250506 --> 2025/5/6
     }
     
     
