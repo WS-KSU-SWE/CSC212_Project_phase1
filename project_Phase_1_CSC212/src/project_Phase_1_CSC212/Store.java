@@ -682,6 +682,7 @@ public class Store {
 		searchOrder(id);
 	}
 	
+	/*
 	// test main method
 	public static void main(String[] args) throws IOException {
 		
@@ -699,5 +700,5 @@ public class Store {
 		store.products.retrive().getReviewList().printPQ();
 		
 	}
-	
+	*/
 }
